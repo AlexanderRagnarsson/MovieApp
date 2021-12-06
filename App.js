@@ -5,7 +5,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Danni bbranch!</Text>
+      <Text>Danni asdfasfd!</Text>
       <StatusBar style="auto" />
     </View>
   );
