@@ -1,21 +1,14 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+import { createStore, applyMiddleware } from 'redux';
+import reducers from './src/reducers';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Danni bbranch!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+const App = () => (
+  <Provider
+    store={createStore(reducers, applyMiddleware(thunk))}
+  />
+);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
