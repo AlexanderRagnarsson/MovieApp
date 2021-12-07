@@ -3,21 +3,21 @@ import PropTypes from 'prop-types';
 import { View, FlatList } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import CinemasPreview from '../CinemaPreview';
-import getMovieList from '../../actions/movieActions';
+import getCinemaList from '../../actions/cinemaActions';
 
 const Cinemas = ({ navigate }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getMovieList());
+    dispatch(getCinemaList());
   }, []);
-  const { movies } = useSelector((state) => state);
+  const cinemas = useSelector((state) => state.cinemas);
   // const cinemas = useSelector((state) => state.cinemas);
-  console.log('Cinemas:! ', movies);
+  console.log('Cinemas:! ', cinemas);
   return (
     <View>
       <FlatList
-        data={movies}
+        data={cinemas}
         renderItem={({ item }) => (
           <CinemasPreview {...{ ...item, navigate }} />
         )}

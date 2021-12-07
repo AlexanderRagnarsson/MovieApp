@@ -1,4 +1,4 @@
-import GET_MOVIE_LIST from '../constants';
+import { GET_MOVIE_LIST } from '../constants';
 import movieService from '../services/movieservice';
 
 const getMovieListSuccess = (movieList) => ({
@@ -8,13 +8,13 @@ const getMovieListSuccess = (movieList) => ({
 
 const getMovieListError = () => ({
   type: GET_MOVIE_LIST,
-  payload: 0,
+  payload: [],
 });
 
 const getMovieList = () => async (dispatch) => {
   try {
     const movieList = await movieService.getMovieList();
-    console.log('MovieList: ', movieList);
+    console.log('GET_MOVIE_LIST: ', GET_MOVIE_LIST);
     dispatch(getMovieListSuccess(movieList));
   } catch {
     dispatch(getMovieListError());

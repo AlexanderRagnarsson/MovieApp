@@ -1,15 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { View, FlatList, Text } from 'react-native';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import MoviesPreview from '../MoviePreview';
+import getMovieList from '../../actions/movieActions';
 
 const Movies = ({ cinemaId, navigate }) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getMovieList());
+  }, []);
   const movies = useSelector(
     (state) => state.movies,
   ).filter((movie) => movie.showtimes.reduce((prev, cinemaObject) => (
     cinemaObject.cinema.id === cinemaId || prev), false));
-  console.log('movies', movies);
   return (
     <View>
       <FlatList
