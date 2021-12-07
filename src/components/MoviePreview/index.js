@@ -1,7 +1,7 @@
 import React from 'react';
 // import { useSelector } from 'react-redux';
 import {
-  Text, View, TouchableHighlight, FlatList
+  Text, View, TouchableHighlight, FlatList,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import styles from './styles';

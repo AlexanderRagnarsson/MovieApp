@@ -10,7 +10,7 @@ const Main = () => {
     dispatch(getMovieList());
   }, []);
   const movies = useSelector((state) => state.movies);
-  console.log(movies);
+  console.log('movies: ', movies);
   return (
     <View>
       <Text>Yes please</Text>
