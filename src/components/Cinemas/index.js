@@ -12,7 +12,6 @@ const Cinemas = ({ navigate }) => {
     dispatch(getCinemaList());
   }, []);
   const cinemas = useSelector((state) => state.cinemas);
-  // const cinemas = useSelector((state) => state.cinemas);
   console.log('Cinemas:! ', cinemas);
   return (
     <View>
