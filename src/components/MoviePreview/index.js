@@ -18,7 +18,7 @@ const MoviePreview = ({
         })}
       >
         <View>
-          <Animated.Image style={styles.poster} source={poster}/>
+          <Animated.Image style={styles.poster} source={{ uri: poster }} />
         </View>
       </TouchableHighlight>
     </View>

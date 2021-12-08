@@ -24,7 +24,7 @@ const CinemaDetails = ({ cinemaId, movieId }) => {
       <Text>
         {`${movies[0].title}\n ${movies[0].poster}\n ${movies[0].plot}\n ${movies[0].durationMinutes}\n ${movies[0].year}\n`}
       </Text>
-      <Animated.Image style={styles.poster} source={movies[0].poster} />
+      <Animated.Image style={styles.poster} source={{ uri: movies[0].poster }} />
       <Text>Genres: </Text>
       <FlatList
         data={movies[0].genres}
