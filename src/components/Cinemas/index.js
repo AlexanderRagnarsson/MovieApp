@@ -11,7 +11,11 @@ const Cinemas = ({ navigate }) => {
   useEffect(() => {
     dispatch(getCinemaList());
   }, []);
-  const cinemas = useSelector((state) => state.cinemas);
+  const cinemas = useSelector((state) => state.cinemas.sort(
+    (a, b) => (
+      a.name.localeCompare(b.name)
+    ),
+  ));
   return (
     <View>
       <FlatList

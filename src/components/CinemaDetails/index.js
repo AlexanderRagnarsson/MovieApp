@@ -13,18 +13,18 @@ const CinemaDetails = ({ cinemaId, navigate }) => {
   }, []);
 
   const cinemas = useSelector((state) => state.cinemas).filter((cinema) => cinema.id === cinemaId);
-  console.log('New cinemas', cinemas);
   const {
     name, description, phone, website, address, city,
   } = cinemas.filter((Cinema) => Cinema.id === cinemaId)[0];
-  // const cinemas = useSelector((state) => state.cinemas);
-  console.log('Cinemas:! ', cinemas);
   return (
     <View>
       <Text>
-        {`${name}\n ${description}\n ${phone}\n ${website}\n ${address}\n ${city}`}
+        {`${name}\n ${description}\n`}
       </Text>
       <Movies {...{ cinemaId, navigate }} />
+      <Text>
+        {`Phonenumber: ${phone}.\n Website: ${website}.\n Address: ${address}, ${city}`}
+      </Text>
     </View>
   );
 };

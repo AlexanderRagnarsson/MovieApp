@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
-  View, Text, FlatList, Animated, Linking
+  View, Text, FlatList, Animated, Linking,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import getMovieList from '../../actions/movieActions';
@@ -22,7 +22,7 @@ const CinemaDetails = ({ cinemaId, movieId }) => {
   return (
     <View>
       <Text>
-        {`${movies[0].title}\n ${movies[0].poster}\n ${movies[0].plot}\n ${movies[0].durationMinutes}\n ${movies[0].year}\n`}
+        {`Title: ${movies[0].title}\n Plot: ${movies[0].plot}\n Duration of movie: ${movies[0].durationMinutes} minutes.\n Year of release: ${movies[0].year}\n`}
       </Text>
       <Animated.Image style={styles.poster} source={movies[0].poster} />
       <Text>Genres: </Text>
@@ -41,9 +41,9 @@ const CinemaDetails = ({ cinemaId, movieId }) => {
             <Text>{item.time}</Text>
             <Text
               style={{ color: 'blue' }}
-              onPress={() => Linking.openURL(movies[0].poster)}
+              onPress={() => Linking.openURL(item.purchase_url)}
             >
-              {movies[0].poster}
+              {item.purchase_url}
             </Text>
           </View>
         )}
@@ -53,6 +53,7 @@ const CinemaDetails = ({ cinemaId, movieId }) => {
 };
 
 CinemaDetails.propTypes = {
+  cinemaId: PropTypes.number.isRequired,
   movieId: PropTypes.number.isRequired,
 };
 
