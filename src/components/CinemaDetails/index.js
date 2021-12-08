@@ -22,7 +22,7 @@ const CinemaDetails = ({ cinemaId, navigate }) => {
   return (
     <View>
       <Text>
-        {`${cinemaId}\n ${name}\n ${description}\n ${phone}\n ${website}\n ${address}\n ${city}`}
+        {`${name}\n ${description}\n ${phone}\n ${website}\n ${address}\n ${city}`}
       </Text>
       <Movies {...{ cinemaId, navigate }} />
     </View>

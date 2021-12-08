@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { View, Text, FlatList } from 'react-native';
+import {
+  View, Text, FlatList, Animated, Linking
+} from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import getMovieList from '../../actions/movieActions';
+import styles from './styles';
 
 const CinemaDetails = ({ cinemaId, movieId }) => {
   const dispatch = useDispatch();
@@ -21,6 +24,7 @@ const CinemaDetails = ({ cinemaId, movieId }) => {
       <Text>
         {`${movies[0].title}\n ${movies[0].poster}\n ${movies[0].plot}\n ${movies[0].durationMinutes}\n ${movies[0].year}\n`}
       </Text>
+      <Animated.Image style={styles.poster} source={movies[0].poster} />
       <Text>Genres: </Text>
       <FlatList
         data={movies[0].genres}
@@ -35,7 +39,12 @@ const CinemaDetails = ({ cinemaId, movieId }) => {
         renderItem={({ item }) => (
           <View>
             <Text>{item.time}</Text>
-            <Text>{item.purchase_url}</Text>
+            <Text
+              style={{ color: 'blue' }}
+              onPress={() => Linking.openURL(movies[0].poster)}
+            >
+              {movies[0].poster}
+            </Text>
           </View>
         )}
       />
