@@ -14,7 +14,7 @@ const upcomingMoviesService = {
     }).then((response) => {
       console.log('Response data: ', response.data);
       return (
-        response.data
+        response.data.map((item) => ({ ...item, year: item['release-dateIS'].substring(0, 4) }))
       );
     })
   ),

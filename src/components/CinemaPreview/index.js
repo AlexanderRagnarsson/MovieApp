@@ -17,7 +17,6 @@ const CinemaPreview = ({
       })}
     >
       <View style={styles.view}>
-        <Text style={styles.id}>{id}</Text>
         <Text style={styles.name}>{name}</Text>
         <Text style={styles.website}>{website}</Text>
       </View>

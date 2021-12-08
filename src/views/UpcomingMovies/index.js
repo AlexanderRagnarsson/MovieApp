@@ -8,7 +8,7 @@ import UpcomingMovies from '../../components/UpcomingMovies';
 // import AddContactModal from '../../components/AddContactModal';
 // import ImportContacts from '../../components/ImportContacts';
 
-const Contacts = ({ navigation: { navigate } }) => {
+const UpcomingMoviesView = ({ navigation: { navigate } }) => {
   const thing = '';
   console.log(thing);
   return (
@@ -20,4 +20,4 @@ const Contacts = ({ navigation: { navigate } }) => {
 //   navigation: PropTypes.objectOf(PropTypes.func).isRequired,
 // };
 
-export default Contacts;
+export default UpcomingMoviesView;

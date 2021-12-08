@@ -1,24 +1,19 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-// import PropTypes from 'prop-types';
-// import SearchBar from '../../components/SearchBar';
-// import AddButton from '../../components/AddButton';
-// import ContactPreview from '../../components/ContactPreview';
-// import AddContactModal from '../../components/AddContactModal';
-// import ImportContacts from '../../components/ImportContacts';
+import PropTypes from 'prop-types';
+import MovieDetails from '../../components/MovieDetails';
 
-const Contacts = () => {
-  const thing = '';
-  console.log(thing);
+const MovieView = ({ route }) => {
+  const { id, cinemaId } = route.params;
   return (
-    <View>
-      <Text>Hi Danni!</Text>
-    </View>
+    <MovieDetails
+      {...{ cinemaId, movieId: id }}
+    />
   );
 };
 
-// Contacts.propTypes = {
-//   navigation: PropTypes.objectOf(PropTypes.func).isRequired,
-// };
+MovieView.propTypes = {
+  navigation: PropTypes.objectOf(PropTypes.func).isRequired,
+  route: PropTypes.objectOf(PropTypes.any).isRequired,
+};
 
-export default Contacts;
+export default MovieView;

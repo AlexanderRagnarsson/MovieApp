@@ -21,7 +21,7 @@ const cinemaService = {
         // eslint-disable-next-line guard-for-in
         for (const key in item) {
           if (typeof item[key] === 'string') {
-            obj[key.trim()] = item[key].replaceAll('<br>', '').replaceAll('\n', '').replaceAll('<b>', '');
+            obj[key.trim()] = item[key].replaceAll('<br>', '').replaceAll('\n', ' ').replaceAll('<b>', '');
           } else {
             obj[key.trim()] = item[key];
           }
