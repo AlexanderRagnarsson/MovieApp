@@ -15,7 +15,8 @@ const CinemaDetails = ({ cinemaId, movieId }) => {
   }, []);
 
   const movies = useSelector((state) => state.movies).filter((movie) => movie.id === movieId);
-  const showtimes = movies[0].showtimes.filter((item) => item.cinema.id === cinemaId);
+  const showtimes = movies[0].showtimes.filter((item) => item.cinema.id === cinemaId)[0];
+  // console.log(showtimes);
   return (
     <View>
       <Text>
@@ -32,7 +33,7 @@ const CinemaDetails = ({ cinemaId, movieId }) => {
       />
       <Text>Showtimes: </Text>
       <FlatList
-        data={showtimes[0].schedule}
+        data={showtimes.schedule}
         renderItem={({ item }) => (
           <View>
             <Text>{item.time}</Text>
@@ -44,7 +45,7 @@ const CinemaDetails = ({ cinemaId, movieId }) => {
             </Text>
           </View>
         )}
-        keyExtractor={(item) => item.ID}
+        keyExtractor={(item) => item.purchase_url}
       />
     </View>
   );
