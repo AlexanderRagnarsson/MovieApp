@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import MoviesPreview from '../MoviePreview';
 import getMovieList from '../../actions/movieActions';
 
-const Movies = ({ cinemaId, navigate }) => {
+const Movies = ({ cinemaId, navigate, header }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -19,6 +19,7 @@ const Movies = ({ cinemaId, navigate }) => {
   return (
     <View>
       <FlatList
+        ListHeaderComponent={header}
         data={movies}
         renderItem={({ item }) => (
           <MoviesPreview {...{ ...item, navigate, cinemaId }} />

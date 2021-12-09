@@ -4,6 +4,7 @@ import { View, FlatList } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import CinemasPreview from '../CinemaPreview';
 import getCinemaList from '../../actions/cinemaActions';
+import styles from './styles';
 
 const Cinemas = ({ navigate }) => {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ const Cinemas = ({ navigate }) => {
     ),
   ));
   return (
-    <View>
+    <View style={styles.container}>
       <FlatList
         data={cinemas}
         renderItem={({ item }) => (

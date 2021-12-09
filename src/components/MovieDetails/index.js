@@ -14,25 +14,36 @@ const CinemaDetails = ({ cinemaId, movieId }) => {
     dispatch(getMovieList());
   }, []);
 
+  const informationCheck = (information) => (information !== undefined ? information : 'N/A');
+
   const movies = useSelector((state) => state.movies).filter((movie) => movie.id === movieId);
   const showtimes = movies[0].showtimes.filter((item) => item.cinema.id === cinemaId)[0];
   // console.log(showtimes);
   return (
-    <View>
-      <Text>
-        {`Title: ${movies[0].title}\n Plot: ${movies[0].plot}\n Duration of movie: ${movies[0].durationMinutes} minutes.\n Year of release: ${movies[0].year}\n`}
+    <View style={styles.container}>
+      <Text style={styles.title}>
+        {`${informationCheck(movies[0].title)}`}
+      </Text>
+      <Text style={styles.plot}>
+        {`${informationCheck(movies[0].plot)}`}
+      </Text>
+      <Text style={styles.duration}>
+        {`Lengd myndar: ${informationCheck(movies[0].durationMinutes)} mínútur.`}
+      </Text>
+      <Text style={styles.year}>
+        {`Útgáfuár: ${informationCheck(movies[0].year)}`}
       </Text>
       <Animated.Image style={styles.poster} source={{ uri: movies[0].poster }} />
-      <Text>Genres: </Text>
       <FlatList
+        ListHeaderComponent={<Text>Þemu: </Text>}
         data={movies[0].genres}
         renderItem={({ item }) => (
           <Text>{item.Name}</Text>
         )}
         keyExtractor={(genre) => genre.ID}
       />
-      <Text>Showtimes: </Text>
       <FlatList
+        ListHeaderComponent={<Text>Sýningartímar: </Text>}
         data={showtimes.schedule}
         renderItem={({ item }) => (
           <View>

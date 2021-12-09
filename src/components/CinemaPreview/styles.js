@@ -3,14 +3,13 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   view: {
     paddingBottom: 10,
+    paddingLeft: 5,
   },
-  add: {
-    flex: 0.7,
+  name: {
+    fontSize: 48,
   },
-  import: {
-    flex: 0.2,
-  },
-  container: {
-    paddingBottom: 100,
+  website: {
+    fontSize: 24,
+    fontWeight: 'bold',
   },
 });

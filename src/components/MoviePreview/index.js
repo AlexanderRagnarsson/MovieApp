@@ -9,7 +9,7 @@ import styles from './styles';
 const MoviePreview = ({
   id, title, poster, year, genres, navigate, cinemaId,
 }) => (
-  <View style={styles.view}>
+  <View style={styles.container}>
     <View style={styles.Image}>
       <TouchableHighlight
         style={styles.touchable}
@@ -22,16 +22,18 @@ const MoviePreview = ({
         </View>
       </TouchableHighlight>
     </View>
-    <View style={styles.notImage}>
+    <View style={styles.movieDetails}>
       <Text style={styles.title}>{title}</Text>
       <Text style={styles.year}>{year}</Text>
-      <FlatList
-        data={genres}
-        renderItem={({ item }) => (
-          <Text>{item.Name}</Text>
-        )}
-        keyExtractor={(genre) => genre.ID + title}
-      />
+      <View style={styles.genres}>
+        <FlatList
+          data={genres}
+          renderItem={({ item }) => (
+            <Text style={styles.genre}>{item.Name}</Text>
+          )}
+          keyExtractor={(genre) => genre.ID + title}
+        />
+      </View>
     </View>
   </View>
 );

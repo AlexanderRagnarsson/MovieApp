@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { View, Text } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import Movies from '../Movies';
 import getCinemaList from '../../actions/cinemaActions';
+import styles from './styles';
 
 const CinemaDetails = ({ cinemaId, navigate }) => {
   const dispatch = useDispatch();
@@ -16,15 +17,32 @@ const CinemaDetails = ({ cinemaId, navigate }) => {
   const {
     name, description, phone, website, address, city,
   } = cinemas.filter((Cinema) => Cinema.id === cinemaId)[0];
-  return (
+
+  const getHeader = () => (
     <View>
-      <Text>
-        {`${name}\n ${description}\n`}
+      <Text style={styles.name}>
+        {name}
       </Text>
-      <Movies {...{ cinemaId, navigate }} />
-      <Text>
-        {`Phonenumber: ${phone}.\n Website: ${website}.\n Address: ${address}, ${city}`}
+      <Text style={styles.description}>
+        {description}
       </Text>
+      <Text style={styles.details}>
+        {`Sími: ${phone}`}
+      </Text>
+      <Text style={styles.details}>
+        {`Vefslóð: ${website}`}
+      </Text>
+      <Text style={styles.details}>
+        {`Staðsetning: ${address}, ${city}`}
+      </Text>
+    </View>
+  );
+
+  return (
+    <View style={styles.view}>
+      <View style={styles.movieList}>
+        <Movies {...{ cinemaId, navigate, header: getHeader() }} />
+      </View>
     </View>
   );
 };
