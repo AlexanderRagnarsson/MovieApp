@@ -14,9 +14,10 @@ const getMovieListError = () => ({
 const getMovieList = () => async (dispatch) => {
   try {
     const movieList = await movieService.getMovieList();
-    console.log('GET_MOVIE_LIST: ', GET_MOVIE_LIST);
+    // console.log('GET_MOVIE_LIST: ', GET_MOVIE_LIST);
     dispatch(getMovieListSuccess(movieList));
-  } catch {
+  } catch (err) {
+    console.error('Error!: ', err);
     dispatch(getMovieListError());
   }
 };

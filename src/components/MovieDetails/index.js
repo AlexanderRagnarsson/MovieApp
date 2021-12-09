@@ -16,13 +16,12 @@ const CinemaDetails = ({ cinemaId, movieId }) => {
 
   const movies = useSelector((state) => state.movies).filter((movie) => movie.id === movieId);
   const showtimes = movies[0].showtimes.filter((item) => item.cinema.id === cinemaId);
-
   return (
     <View>
       <Text>
         {`Title: ${movies[0].title}\n Plot: ${movies[0].plot}\n Duration of movie: ${movies[0].durationMinutes} minutes.\n Year of release: ${movies[0].year}\n`}
       </Text>
-      <Animated.Image style={styles.poster} source={movies[0].poster} />
+      <Animated.Image style={styles.poster} source={{ uri: movies[0].poster }} />
       <Text>Genres: </Text>
       <FlatList
         data={movies[0].genres}
@@ -45,6 +44,7 @@ const CinemaDetails = ({ cinemaId, movieId }) => {
             </Text>
           </View>
         )}
+        keyExtractor={(item) => item.ID}
       />
     </View>
   );
