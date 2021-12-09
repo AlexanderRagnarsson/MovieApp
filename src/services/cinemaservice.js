@@ -14,7 +14,7 @@ const cinemaService = {
       },
     }).then((response) => {
       // return response.data;
-      console.log('Response data: ', response.data);
+      // console.log('Response data: ', response.data);
       const sanitizedData = [];
       response.data.forEach((item) => {
         const obj = {};

@@ -16,10 +16,9 @@ const Cinemas = ({ navigate }) => {
     <View>
       <FlatList
         data={cinemas}
-        renderItem={({ item }) => {
-          console.log('item', item);
-          return <CinemasPreview {...{ ...item, navigate }} />;
-        }}
+        renderItem={({ item }) => (
+          <CinemasPreview {...{ ...item, navigate }} />
+        )}
         keyExtractor={(board) => board.id}
       />
     </View>

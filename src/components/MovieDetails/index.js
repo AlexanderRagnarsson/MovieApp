@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
-  View, Text, FlatList, Animated, Linking
+  View, Text, FlatList, Animated, Linking,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import getMovieList from '../../actions/movieActions';
@@ -16,9 +16,9 @@ const CinemaDetails = ({ cinemaId, movieId }) => {
 
   const movies = useSelector((state) => state.movies).filter((movie) => movie.id === movieId);
   const showtimes = movies[0].showtimes.filter((item) => item.cinema.id === cinemaId);
-  console.log('New movie', movies);
+  // console.log('New movie', movies);
 
-  console.log('showtimes: ', showtimes[0].schedule);
+  // console.log('showtimes: ', showtimes[0].schedule);
   return (
     <View>
       <Text>
@@ -54,6 +54,7 @@ const CinemaDetails = ({ cinemaId, movieId }) => {
 
 CinemaDetails.propTypes = {
   movieId: PropTypes.number.isRequired,
+  cinemaId: PropTypes.number.isRequired,
 };
 
 export default CinemaDetails;

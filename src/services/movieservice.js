@@ -11,13 +11,9 @@ const movieService = {
       headers: {
         'x-access-token': token,
       },
-    }).then((response) => {
-      console.log('Response data: ', response.data);
-      return (
-        response.data
-      );
-    })
-  ),
+    }).then((response) => (
+      response.data
+    ))),
 };
 
 export default movieService;

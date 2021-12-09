@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  View, Text, FlatList, Animated, Linking,
+  View, Text, FlatList, Animated,
 } from 'react-native';
 // import { useDispatch, useSelector } from 'react-redux';
 import { useSelector } from 'react-redux';
@@ -18,7 +18,7 @@ const UpcomingMoviePreview = ({ movieId }) => {
   )[0];
 
   const {
-    title, plot, durationMinutes, year, genres
+    title, plot, durationMinutes, year, genres,
   } = upcomingMovie;
 
   return (
@@ -35,7 +35,7 @@ const UpcomingMoviePreview = ({ movieId }) => {
       <Text>
         {informationCheck(year)}
       </Text>
-      <Animated.Image style={styles.poster} source={upcomingMovie.poster} />
+      <Animated.Image style={styles.poster} source={{ uri: upcomingMovie.poster }} />
       <Text>{(genres !== [] && genres !== undefined) ? 'Genres:' : ''}</Text>
       <FlatList
         data={upcomingMovie.genres}
