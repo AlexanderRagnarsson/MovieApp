@@ -18,7 +18,7 @@ const MoviePreview = ({
         })}
       >
         <View>
-          <Animated.Image style={styles.poster} source={poster} />
+          <Animated.Image style={styles.poster} source={{ uri: poster }} />
         </View>
       </TouchableHighlight>
     </View>
@@ -41,7 +41,7 @@ MoviePreview.propTypes = {
   title: PropTypes.string.isRequired,
   poster: PropTypes.string.isRequired,
   year: PropTypes.string.isRequired,
-  // genres: PropTypes.arrayOf(PropTypes.string).isRequired,
+  genres: PropTypes.arrayOf(PropTypes.object).isRequired,
   navigate: PropTypes.func.isRequired,
   cinemaId: PropTypes.number.isRequired,
 };

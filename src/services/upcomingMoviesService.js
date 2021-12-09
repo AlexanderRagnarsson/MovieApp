@@ -11,12 +11,9 @@ const upcomingMoviesService = {
       headers: {
         'x-access-token': token,
       },
-    }).then((response) => {
-      console.log('Response data: ', response.data);
-      return (
-        response.data.map((item) => ({ ...item, year: item['release-dateIS'].substring(0, 4) }))
-      );
-    })
+    }).then((response) => (
+      response.data.map((item) => ({ ...item, year: item['release-dateIS'].substring(0, 4) }))
+    ))
   ),
 };
 

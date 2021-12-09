@@ -18,9 +18,9 @@ const UpcomingMovies = ({ navigate }) => {
     (a, b) => {
       const dateA = new Date(a['release-dateIS']);
       const dateB = new Date(b['release-dateIS']);
-      console.log(dateA.toString());
-      console.log(dateB.toString());
-      console.log(dateA > dateB);
+      // console.log(dateA.toString());
+      // console.log(dateB.toString());
+      // console.log(dateA > dateB);
       if (dateA > dateB) {
         return 1;
       }
@@ -33,7 +33,7 @@ const UpcomingMovies = ({ navigate }) => {
     (a) => ({ ...a, year: a['release-dateIS'].substring(0, 4) }),
   );
   // const cinemas = useSelector((state) => state.cinemas);
-  console.log('Cinemas:! ', upcomingMovies);
+  // console.log('Cinemas:! ', upcomingMovies);
   return (
     <View>
       <FlatList

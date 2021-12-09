@@ -13,12 +13,12 @@ const CinemaDetails = ({ cinemaId, navigate }) => {
   }, []);
 
   const cinemas = useSelector((state) => state.cinemas).filter((cinema) => cinema.id === cinemaId);
-  console.log('New cinemas', cinemas);
+  // console.log('New cinemas', cinemas);
   const {
     name, description, phone, website, address, city,
   } = cinemas.filter((Cinema) => Cinema.id === cinemaId)[0];
   // const cinemas = useSelector((state) => state.cinemas);
-  console.log('Cinemas:! ', cinemas);
+  // console.log('Cinemas:! ', cinemas);
   return (
     <View>
       <Text>

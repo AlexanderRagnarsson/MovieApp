@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { View, FlatList } from 'react-native';
+import { Text, View, FlatList } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import CinemasPreview from '../CinemaPreview';
 import getCinemaList from '../../actions/cinemaActions';
