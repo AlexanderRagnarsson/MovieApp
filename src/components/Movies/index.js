@@ -23,7 +23,7 @@ const Movies = ({ cinemaId, navigate }) => {
         renderItem={({ item }) => (
           <MoviesPreview {...{ ...item, navigate, cinemaId }} />
         )}
-        keyExtractor={(movie) => movie.id + movie.title}
+        keyExtractor={(movie) => movie.id}
       />
     </View>
   );
