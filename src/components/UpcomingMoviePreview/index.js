@@ -8,33 +8,43 @@ import styles from './styles';
 
 const UpcomingMoviePreview = ({
   id, title, poster, year, genres, navigate,
-}) => (
-  <View style={styles.view}>
-    <View style={styles.Image}>
-      <TouchableHighlight
-        style={styles.touchable}
-        onPress={() => navigate('UpcomingMovie', {
-          id,
-        })}
-      >
-        <View>
-          <Animated.Image style={styles.poster} source={{ uri: poster }} />
-        </View>
-      </TouchableHighlight>
-    </View>
-    <View style={styles.notImage}>
-      <Text style={styles.title}>{title}</Text>
-      <Text style={styles.year}>{year}</Text>
+}) => {
+  const getGenres = () => {
+    if (genres === undefined) return null;
+    const objectGenres = genres.filter((item) => typeof item === 'object');
+    if (objectGenres.length === 0) return null;
+    return (
       <FlatList
-        data={genres}
+        data={objectGenres}
         renderItem={({ item }) => (
           <Text>{item.Name}</Text>
         )}
         keyExtractor={(genre) => genre.ID}
       />
+    );
+  };
+  return (
+    <View style={styles.view}>
+      <View style={styles.Image}>
+        <TouchableHighlight
+          style={styles.touchable}
+          onPress={() => navigate('UpcomingMovie', {
+            id,
+          })}
+        >
+          <View>
+            <Animated.Image style={styles.poster} source={{ uri: poster }} />
+          </View>
+        </TouchableHighlight>
+      </View>
+      <View style={styles.notImage}>
+        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.year}>{year}</Text>
+        { getGenres() }
+      </View>
     </View>
-  </View>
-);
+  );
+};
 
 UpcomingMoviePreview.propTypes = {
   id: PropTypes.number.isRequired,

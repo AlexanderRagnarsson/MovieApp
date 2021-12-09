@@ -24,6 +24,21 @@ const UpcomingMoviePreview = ({ movieId }) => {
 
   // console.log(upcomingMovie);
 
+  const getGenres = () => {
+    if (genres === undefined) return null;
+    const objectGenres = genres.filter((item) => typeof item === 'object');
+    if (objectGenres.length === 0) return null;
+    return (
+      <FlatList
+        data={objectGenres}
+        renderItem={({ item }) => (
+          <Text>{item.Name}</Text>
+        )}
+        keyExtractor={(genre) => genre.ID}
+      />
+    );
+  };
+
   const getTrailer = () => {
     const trailer = trailers[0];
     if (trailer === undefined) { return null; }
@@ -55,15 +70,9 @@ const UpcomingMoviePreview = ({ movieId }) => {
         {informationCheck(year)}
       </Text>
       <Animated.Image style={styles.poster} source={{ uri: upcomingMovie.poster }} />
-      { getTrailer() }
       <Text>{(genres !== [] && genres !== undefined) ? 'Genres:' : ''}</Text>
-      <FlatList
-        data={upcomingMovie.genres}
-        renderItem={({ item }) => (
-          <Text>{item.Name}</Text>
-        )}
-        keyExtractor={(genre) => genre.ID}
-      />
+      { getGenres() }
+      { getTrailer() }
     </View>
   );
 };
