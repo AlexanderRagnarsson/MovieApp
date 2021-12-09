@@ -23,7 +23,22 @@ const UpcomingMoviePreview = ({ movieId }) => {
   } = upcomingMovie;
 
   // console.log(upcomingMovie);
-  const trailer = trailers[0];
+
+  const getTrailer = () => {
+    const trailer = trailers[0];
+    if (trailer === undefined) { return null; }
+    if (trailer.results.length === 0) { return null; }
+    let { key } = trailer.results[0];
+    const officialTrailers = trailers[0].results.filter((trailerItem) => trailerItem.name.toLowerCase().includes('official'));
+    if (officialTrailers.length !== 0) { key = officialTrailers[0].key; }
+    return (
+      <YoutubePlayer
+        height={300}
+        // play
+        videoId={key}
+      />
+    );
+  };
 
   return (
     <View>
@@ -40,15 +55,7 @@ const UpcomingMoviePreview = ({ movieId }) => {
         {informationCheck(year)}
       </Text>
       <Animated.Image style={styles.poster} source={{ uri: upcomingMovie.poster }} />
-      { trailer !== undefined && trailer.results[0] !== undefined
-        ? (
-          <YoutubePlayer
-            height={300}
-            play
-            videoId={trailer.results[0].key}
-          />
-        )
-        : null }
+      { getTrailer() }
       <Text>{(genres !== [] && genres !== undefined) ? 'Genres:' : ''}</Text>
       <FlatList
         data={upcomingMovie.genres}
