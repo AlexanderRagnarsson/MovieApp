@@ -30,7 +30,7 @@ const MoviePreview = ({
         renderItem={({ item }) => (
           <Text>{item.Name}</Text>
         )}
-        keyExtractor={(genre) => genre.ID}
+        keyExtractor={(genre) => genre.ID + title}
       />
     </View>
   </View>

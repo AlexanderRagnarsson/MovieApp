@@ -14,10 +14,10 @@ const getCinemaListError = () => ({
 const getCinemaList = () => async (dispatch) => {
   try {
     const cinemaList = await cinemaservices.getCinemaList();
-    console.log('GET_CINEMA_LIST: ', GET_CINEMA_LIST);
+    // console.log('GET_CINEMA_LIST: ', GET_CINEMA_LIST);
     dispatch(getCinemaListSuccess(cinemaList));
   } catch (err) {
-    console.error(err);
+    console.error('Error!: ', err);
     dispatch(getCinemaListError());
   }
 };

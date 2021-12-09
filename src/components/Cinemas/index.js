@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Text, View, FlatList } from 'react-native';
+import { View, FlatList } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import CinemasPreview from '../CinemaPreview';
 import getCinemaList from '../../actions/cinemaActions';
@@ -11,7 +11,11 @@ const Cinemas = ({ navigate }) => {
   useEffect(() => {
     dispatch(getCinemaList());
   }, []);
-  const cinemas = useSelector((state) => state.cinemas);
+  const cinemas = useSelector((state) => state.cinemas.sort(
+    (a, b) => (
+      a.name.localeCompare(b.name)
+    ),
+  ));
   return (
     <View>
       <FlatList

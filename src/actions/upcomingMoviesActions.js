@@ -14,9 +14,9 @@ const getUpcomingMoviesListError = () => ({
 const getUpcomingMoviesList = () => async (dispatch) => {
   try {
     const UpcomingMoviesList = await UpcomingMoviesServices.getUpcomingMoviesList();
-    console.log('GET_UpcomingMovies_LIST: ', GET_UPCOMING_MOVIES_LIST);
+    // console.log('GET_UpcomingMovies_LIST: ', GET_UPCOMING_MOVIES_LIST);
     dispatch(getUpcomingMoviesListSuccess(UpcomingMoviesList));
-  } catch(err) {
+  } catch (err) {
     console.error(err);
     dispatch(getUpcomingMoviesListError());
   }

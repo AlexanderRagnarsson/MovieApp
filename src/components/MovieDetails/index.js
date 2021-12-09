@@ -15,14 +15,12 @@ const CinemaDetails = ({ cinemaId, movieId }) => {
   }, []);
 
   const movies = useSelector((state) => state.movies).filter((movie) => movie.id === movieId);
-  const showtimes = movies[0].showtimes.filter((item) => item.cinema.id === cinemaId);
-  // console.log('New movie', movies);
-
-  // console.log('showtimes: ', showtimes[0].schedule);
+  const showtimes = movies[0].showtimes.filter((item) => item.cinema.id === cinemaId)[0];
+  // console.log(showtimes);
   return (
     <View>
       <Text>
-        {`${movies[0].title}\n ${movies[0].poster}\n ${movies[0].plot}\n ${movies[0].durationMinutes}\n ${movies[0].year}\n`}
+        {`Title: ${movies[0].title}\n Plot: ${movies[0].plot}\n Duration of movie: ${movies[0].durationMinutes} minutes.\n Year of release: ${movies[0].year}\n`}
       </Text>
       <Animated.Image style={styles.poster} source={{ uri: movies[0].poster }} />
       <Text>Genres: </Text>
@@ -35,26 +33,27 @@ const CinemaDetails = ({ cinemaId, movieId }) => {
       />
       <Text>Showtimes: </Text>
       <FlatList
-        data={showtimes[0].schedule}
+        data={showtimes.schedule}
         renderItem={({ item }) => (
           <View>
             <Text>{item.time}</Text>
             <Text
               style={{ color: 'blue' }}
-              onPress={() => Linking.openURL(movies[0].poster)}
+              onPress={() => Linking.openURL(item.purchase_url)}
             >
-              {movies[0].poster}
+              {item.purchase_url}
             </Text>
           </View>
         )}
+        keyExtractor={(item) => item.purchase_url}
       />
     </View>
   );
 };
 
 CinemaDetails.propTypes = {
-  movieId: PropTypes.number.isRequired,
   cinemaId: PropTypes.number.isRequired,
+  movieId: PropTypes.number.isRequired,
 };
 
 export default CinemaDetails;

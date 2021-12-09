@@ -15,6 +15,7 @@ const Movies = ({ cinemaId, navigate }) => {
     (state) => state.movies,
   ).filter((movie) => movie.showtimes.reduce((prev, cinemaObject) => (
     cinemaObject.cinema.id === cinemaId || prev), false));
+  // console.log(movies.id + movies.name);
   return (
     <View>
       <FlatList
