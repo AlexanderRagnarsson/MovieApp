@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  View, Text, FlatList, Animated,
+  View,
 } from 'react-native';
 import { useSelector } from 'react-redux';
 import YoutubePlayer from 'react-native-youtube-iframe';

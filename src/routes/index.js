@@ -11,7 +11,7 @@ const Stack = createStackNavigator();
 
 const Routes = () => (
   <NavigationContainer>
-    <Stack.Navigator initialRouteName="Upcoming Movies">
+    <Stack.Navigator initialRouteName="Cinemas">
       <Stack.Screen name="Cinemas" component={Cinemas} />
       <Stack.Screen name="Cinema Details" component={CinemaDetails} />
       <Stack.Screen name="Movie" component={Movie} />

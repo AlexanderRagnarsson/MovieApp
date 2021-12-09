@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { View, FlatList } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import MoviesPreview from '../MoviePreview';
+// import MoviesPreview from '../MoviePreview';
+import NewMoviePreview from '../NewMoviePreview';
 import getMovieList from '../../actions/movieActions';
 
 const Movies = ({ cinemaId, navigate, header }) => {
@@ -16,13 +17,14 @@ const Movies = ({ cinemaId, navigate, header }) => {
   ).filter((movie) => movie.showtimes.reduce((prev, cinemaObject) => (
     cinemaObject.cinema.id === cinemaId || prev), false));
   // console.log(movies.id + movies.name);
+
   return (
     <View>
       <FlatList
         ListHeaderComponent={header}
         data={movies}
         renderItem={({ item }) => (
-          <MoviesPreview {...{ ...item, navigate, cinemaId }} />
+          <NewMoviePreview {...{ ...item, navigate: () => navigate('Movie', { id: item.id, cinemaId }) }} />
         )}
         keyExtractor={(movie) => movie.id}
       />
@@ -33,6 +35,7 @@ const Movies = ({ cinemaId, navigate, header }) => {
 Movies.propTypes = {
   cinemaId: PropTypes.number.isRequired,
   navigate: PropTypes.func.isRequired,
+  header: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 export default Movies;

@@ -25,6 +25,7 @@ const CinemaPreview = ({
 );
 
 CinemaPreview.propTypes = {
+  id: PropTypes.number.isRequired,
   website: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   navigate: PropTypes.func.isRequired,

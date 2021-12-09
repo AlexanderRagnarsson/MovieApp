@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { View, FlatList } from 'react-native';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import UpcomingMoviePreview from '../UpcomingMoviePreview';
+// import UpcomingMoviePreview from '../UpcomingMoviePreview';
+import NewMoviePreview from '../NewMoviePreview';
 import getUpcomingMoviesList from '../../actions/upcomingMoviesActions';
 
 const UpcomingMovies = ({ navigate }) => {
@@ -39,7 +40,7 @@ const UpcomingMovies = ({ navigate }) => {
       <FlatList
         data={upcomingMovies}
         renderItem={({ item }) => (
-          <UpcomingMoviePreview {...{ ...item, navigate }} />
+          <NewMoviePreview {...{ ...item, navigate: () => navigate('Upcoming Movie', { id: item.id }) }} />
         )}
         keyExtractor={(board) => board.id}
       />
