@@ -16,7 +16,8 @@ const getCinemaList = () => async (dispatch) => {
     const cinemaList = await cinemaservices.getCinemaList();
     console.log('GET_CINEMA_LIST: ', GET_CINEMA_LIST);
     dispatch(getCinemaListSuccess(cinemaList));
-  } catch {
+  } catch (err) {
+    console.error(err);
     dispatch(getCinemaListError());
   }
 };
