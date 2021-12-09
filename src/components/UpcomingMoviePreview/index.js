@@ -28,7 +28,7 @@ const UpcomingMoviePreview = ({
       <View style={styles.Image}>
         <TouchableHighlight
           style={styles.touchable}
-          onPress={() => navigate('UpcomingMovie', {
+          onPress={() => navigate('Upcoming Movie', {
             id,
           })}
         >

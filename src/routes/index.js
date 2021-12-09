@@ -16,7 +16,7 @@ const Routes = () => (
       <Stack.Screen name="Cinema Details" component={CinemaDetails} />
       <Stack.Screen name="Movie" component={Movie} />
       <Stack.Screen name="Upcoming Movies" component={UpcomingMovies} />
-      <Stack.Screen name="UpcomingMovie" component={UpcomingMovie} />
+      <Stack.Screen name="Upcoming Movie" component={UpcomingMovie} />
     </Stack.Navigator>
   </NavigationContainer>
 );

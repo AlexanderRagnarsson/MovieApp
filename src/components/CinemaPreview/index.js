@@ -12,7 +12,7 @@ const CinemaPreview = ({
   <View>
     <TouchableHighlight
       style={styles.touchable}
-      onPress={() => navigate('CinemaDetails', {
+      onPress={() => navigate('Cinema Details', {
         id,
       })}
     >
