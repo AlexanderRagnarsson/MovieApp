@@ -16,6 +16,7 @@ const Cinemas = ({ navigate }) => {
       a.name.localeCompare(b.name)
     ),
   ));
+  console.log('cinema11s', cinemas);
   return (
     <View>
       <FlatList

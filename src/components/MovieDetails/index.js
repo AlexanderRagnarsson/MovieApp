@@ -16,9 +16,7 @@ const CinemaDetails = ({ cinemaId, movieId }) => {
 
   const movies = useSelector((state) => state.movies).filter((movie) => movie.id === movieId);
   const showtimes = movies[0].showtimes.filter((item) => item.cinema.id === cinemaId);
-  console.log('New movie', movies);
 
-  console.log('showtimes: ', showtimes[0].schedule);
   return (
     <View>
       <Text>
