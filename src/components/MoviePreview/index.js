@@ -41,7 +41,7 @@ MoviePreview.propTypes = {
   title: PropTypes.string.isRequired,
   poster: PropTypes.string.isRequired,
   year: PropTypes.string.isRequired,
-  // genres: PropTypes.arrayOf(PropTypes.string).isRequired,
+  genres: PropTypes.arrayOf(PropTypes.object).isRequired,
   navigate: PropTypes.func.isRequired,
   cinemaId: PropTypes.number.isRequired,
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import UpcomingMovies from '../../components/UpcomingMovies';
 // import PropTypes from 'prop-types';
 // import SearchBar from '../../components/SearchBar';
 // import AddButton from '../../components/AddButton';
@@ -7,13 +8,11 @@ import { View, Text } from 'react-native';
 // import AddContactModal from '../../components/AddContactModal';
 // import ImportContacts from '../../components/ImportContacts';
 
-const Contacts = () => {
+const UpcomingMoviesView = ({ navigation: { navigate } }) => {
   const thing = '';
   console.log(thing);
   return (
-    <View>
-      <Text>Hi Danni!</Text>
-    </View>
+    <UpcomingMovies { ...{ navigate } }/>
   );
 };
 
@@ -21,4 +20,4 @@ const Contacts = () => {
 //   navigation: PropTypes.objectOf(PropTypes.func).isRequired,
 // };
 
-export default Contacts;
+export default UpcomingMoviesView;
