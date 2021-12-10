@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import Main from '../views/Main';
 import Cinemas from '../views/Cinemas';
 import CinemaDetails from '../views/CinemaDetails';
 import Movie from '../views/Movie';
@@ -11,12 +12,13 @@ const Stack = createStackNavigator();
 
 const Routes = () => (
   <NavigationContainer>
-    <Stack.Navigator initialRouteName="Cinemas">
+    <Stack.Navigator initialRouteName="Main Menu">
+      <Stack.Screen name="Main Menu" component={Main} />
       <Stack.Screen name="Cinemas" component={Cinemas} />
-      <Stack.Screen name="CinemaDetails" component={CinemaDetails} />
+      <Stack.Screen name="Cinema Details" component={CinemaDetails} />
       <Stack.Screen name="Movie" component={Movie} />
-      <Stack.Screen name="UpcomingMovies" component={UpcomingMovies} />
-      <Stack.Screen name="UpcomingMovie" component={UpcomingMovie} />
+      <Stack.Screen name="Upcoming Movies" component={UpcomingMovies} />
+      <Stack.Screen name="Upcoming Movie" component={UpcomingMovie} />
     </Stack.Navigator>
   </NavigationContainer>
 );

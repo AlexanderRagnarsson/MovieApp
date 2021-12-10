@@ -11,9 +11,9 @@ const getUpcomingMoviesListError = () => ({
   payload: [],
 });
 
-const getUpcomingMoviesList = () => async (dispatch) => {
+const getUpcomingMoviesList = (token) => async (dispatch) => {
   try {
-    const UpcomingMoviesList = await UpcomingMoviesServices.getUpcomingMoviesList();
+    const UpcomingMoviesList = await UpcomingMoviesServices.getUpcomingMoviesList(token);
     // console.log('GET_UpcomingMovies_LIST: ', GET_UPCOMING_MOVIES_LIST);
     dispatch(getUpcomingMoviesListSuccess(UpcomingMoviesList));
   } catch (err) {

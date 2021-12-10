@@ -8,7 +8,7 @@ import getMovieList from '../../actions/movieActions';
 import styles from './styles';
 
 const NewMovieDetails = ({
-  title, plot, year, poster, genres,
+  title, plot, durationMinutes, year, poster, genres,
 }) => {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.token);
@@ -37,6 +37,9 @@ const NewMovieDetails = ({
       <Text style={styles.plot}>
         {`${informationCheck(plot)}`}
       </Text>
+      <Text style={styles.duration}>
+        {`Lengd myndar: ${informationCheck(durationMinutes)} mínútur.`}
+      </Text>
       <Text style={styles.year}>
         {`Útgáfuár: ${informationCheck(year)}`}
       </Text>
@@ -49,6 +52,7 @@ const NewMovieDetails = ({
 NewMovieDetails.propTypes = {
   title: PropTypes.string,
   plot: PropTypes.string,
+  durationMinutes: PropTypes.number,
   year: PropTypes.string,
   poster: PropTypes.string.isRequired,
   genres: PropTypes.arrayOf(PropTypes.any).isRequired,
@@ -57,6 +61,7 @@ NewMovieDetails.propTypes = {
 NewMovieDetails.defaultProps = {
   title: '',
   plot: '',
+  durationMinutes: -1,
   year: '',
 };
 

@@ -2,14 +2,17 @@ import React, { useEffect } from 'react';
 import { View, FlatList } from 'react-native';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import UpcomingMoviePreview from '../UpcomingMoviePreview';
+import NewMoviePreview from '../NewMoviePreview';
 import getUpcomingMoviesList from '../../actions/upcomingMoviesActions';
+// import getToken from '../../actions/tokenActions';
 
 const UpcomingMovies = ({ navigate }) => {
   const dispatch = useDispatch();
 
+  const token = useSelector((state) => state.token);
+
   useEffect(() => {
-    dispatch(getUpcomingMoviesList());
+    dispatch(getUpcomingMoviesList(token));
   }, []);
 
   const upcomingMovies = useSelector(
@@ -18,9 +21,6 @@ const UpcomingMovies = ({ navigate }) => {
     (a, b) => {
       const dateA = new Date(a['release-dateIS']);
       const dateB = new Date(b['release-dateIS']);
-      // console.log(dateA.toString());
-      // console.log(dateB.toString());
-      // console.log(dateA > dateB);
       if (dateA > dateB) {
         return 1;
       }
@@ -32,14 +32,12 @@ const UpcomingMovies = ({ navigate }) => {
   ).map(
     (a) => ({ ...a, year: a['release-dateIS'].substring(0, 4) }),
   );
-  // const cinemas = useSelector((state) => state.cinemas);
-  // console.log('Cinemas:! ', upcomingMovies);
   return (
     <View>
       <FlatList
         data={upcomingMovies}
         renderItem={({ item }) => (
-          <UpcomingMoviePreview {...{ ...item, navigate }} />
+          <NewMoviePreview {...{ ...item, navigate: () => navigate('Upcoming Movie', { id: item.id }) }} />
         )}
         keyExtractor={(board) => board.id}
       />

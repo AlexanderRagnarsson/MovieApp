@@ -8,9 +8,9 @@ import styles from './styles';
 
 const CinemaDetails = ({ cinemaId, navigate }) => {
   const dispatch = useDispatch();
-
+  const token = useSelector((state) => state.token);
   useEffect(() => {
-    dispatch(getCinemaList());
+    dispatch(getCinemaList(token));
   }, []);
 
   const cinemas = useSelector((state) => state.cinemas).filter((cinema) => cinema.id === cinemaId);
@@ -39,11 +39,12 @@ const CinemaDetails = ({ cinemaId, navigate }) => {
   );
 
   return (
-    <View style={styles.view}>
+    <ScrollView style={styles.view}>
+      { getHeader() }
       <View style={styles.movieList}>
-        <Movies {...{ cinemaId, navigate, header: getHeader() }} />
+        <Movies {...{ cinemaId, navigate }} />
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
