@@ -1,10 +1,9 @@
 import axios from 'axios';
-import token from '../constants/index';
 
 const BASE_ENDPOINT = 'https://api.kvikmyndir.is';
 
 const upcomingMoviesService = {
-  getUpcomingMoviesList: async () => (
+  getUpcomingMoviesList: async (token) => (
     axios({
       method: 'get',
       url: `${BASE_ENDPOINT}/upcoming`,

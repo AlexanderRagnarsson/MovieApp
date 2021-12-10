@@ -5,8 +5,8 @@ import {
 import { useSelector } from 'react-redux';
 import YoutubePlayer from 'react-native-youtube-iframe';
 import PropTypes from 'prop-types';
-// import UpcomingMovieDetail from '../../components/UpcomingMovieDetails';
-import NewMovieDetail from '../../components/NewMovieDetails';
+import UpcomingMovieDetail from '../../components/UpcomingMovieDetails';
+// import NewMovieDetail from '../../components/NewMovieDetails';
 
 const UpcomingMovieView = ({ route }) => {
   const { id } = route.params;
@@ -36,7 +36,7 @@ const UpcomingMovieView = ({ route }) => {
 
   return (
     <ScrollView>
-      <NewMovieDetail
+      <UpcomingMovieDetail
         {...upcomingMovie}
       />
       { getTrailer() }

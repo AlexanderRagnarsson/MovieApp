@@ -1,84 +1,63 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
-  View, Text, FlatList, Animated,
+  ScrollView, Text, Animated,
 } from 'react-native';
-// import { useDispatch, useSelector } from 'react-redux';
-import { useSelector } from 'react-redux';
-import YoutubePlayer from 'react-native-youtube-iframe';
-// import getMovieList from '../../actions/movieActions';
+import { useDispatch, useSelector } from 'react-redux';
+import getMovieList from '../../actions/movieActions';
 import styles from './styles';
 
-const UpcomingMoviePreview = ({ movieId }) => {
-  const informationCheck = (information) => (information !== undefined ? information : '');
+const NewMovieDetails = ({
+  title, plot, year, poster, genres,
+}) => {
+  const dispatch = useDispatch();
+  const token = useSelector((state) => state.token);
+  useEffect(() => {
+    dispatch(getMovieList(token));
+  }, []);
 
-  const upcomingMovie = useSelector(
-    (state) => state.upcomingMovies,
-  ).filter(
-    (movie) => movie.id === movieId,
-  )[0];
-
-  const {
-    title, plot, durationMinutes, year, genres, trailers,
-  } = upcomingMovie;
-
-  // console.log(upcomingMovie);
+  const informationCheck = (information) => (
+    (information !== undefined || information !== '' || information !== -1) ? information : 'N/A'
+  );
 
   const getGenres = () => {
     if (genres === undefined) return null;
     const objectGenres = genres.filter((item) => typeof item === 'object');
     if (objectGenres.length === 0) return null;
     return (
-      <FlatList
-        data={objectGenres}
-        renderItem={({ item }) => (
-          <Text>{item.Name}</Text>
-        )}
-        keyExtractor={(genre) => genre.ID}
-      />
-    );
-  };
-
-  const getTrailer = () => {
-    const trailer = trailers[0];
-    if (trailer === undefined) { return null; }
-    if (trailer.results.length === 0) { return null; }
-    let { key } = trailer.results[0];
-    const officialTrailers = trailers[0].results.filter((trailerItem) => trailerItem.name.toLowerCase().includes('official'));
-    if (officialTrailers.length !== 0) { key = officialTrailers[0].key; }
-    return (
-      <YoutubePlayer
-        height={300}
-        // play
-        videoId={key}
-      />
+      objectGenres.map((item) => <Text key={item.ID}>{item.Name}</Text>)
     );
   };
 
   return (
-    <View>
-      <Text>
-        {informationCheck(title)}
+    <ScrollView style={styles.container}>
+      <Text style={styles.title}>
+        {`${informationCheck(title)}`}
       </Text>
-      <Text>
-        {informationCheck(plot)}
+      <Text style={styles.plot}>
+        {`${informationCheck(plot)}`}
       </Text>
-      <Text>
-        {informationCheck(durationMinutes)}
+      <Text style={styles.year}>
+        {`Útgáfuár: ${informationCheck(year)}`}
       </Text>
-      <Text>
-        {informationCheck(year)}
-      </Text>
-      <Animated.Image style={styles.poster} source={{ uri: upcomingMovie.poster }} />
-      <Text>{(genres !== [] && genres !== undefined) ? 'Genres:' : ''}</Text>
+      <Animated.Image style={styles.poster} source={{ uri: poster }} />
       { getGenres() }
-      { getTrailer() }
-    </View>
+    </ScrollView>
   );
 };
 
-UpcomingMoviePreview.propTypes = {
-  movieId: PropTypes.number.isRequired,
+NewMovieDetails.propTypes = {
+  title: PropTypes.string,
+  plot: PropTypes.string,
+  year: PropTypes.string,
+  poster: PropTypes.string.isRequired,
+  genres: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
 
-export default UpcomingMoviePreview;
+NewMovieDetails.defaultProps = {
+  title: '',
+  plot: '',
+  year: '',
+};
+
+export default NewMovieDetails;
