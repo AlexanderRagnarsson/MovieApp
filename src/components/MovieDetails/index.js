@@ -10,8 +10,9 @@ import styles from './styles';
 const CinemaDetails = ({ cinemaId, movieId }) => {
   const dispatch = useDispatch();
 
+  const token = useSelector((state) => state.token);
   useEffect(() => {
-    dispatch(getMovieList());
+    dispatch(getMovieList(token));
   }, []);
 
   const informationCheck = (information) => (information !== undefined ? information : 'N/A');

@@ -51,7 +51,6 @@ UpcomingMoviePreview.propTypes = {
   title: PropTypes.string.isRequired,
   poster: PropTypes.string.isRequired,
   year: PropTypes.string.isRequired,
-  // Skítamix. Skilgreining:
   genres: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object, PropTypes.number])).isRequired,
   navigate: PropTypes.func.isRequired,
 };

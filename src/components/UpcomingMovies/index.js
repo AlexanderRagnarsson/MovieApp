@@ -4,12 +4,15 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import NewMoviePreview from '../NewMoviePreview';
 import getUpcomingMoviesList from '../../actions/upcomingMoviesActions';
+// import getToken from '../../actions/tokenActions';
 
 const UpcomingMovies = ({ navigate }) => {
   const dispatch = useDispatch();
 
+  const token = useSelector((state) => state.token);
+
   useEffect(() => {
-    dispatch(getUpcomingMoviesList());
+    dispatch(getUpcomingMoviesList(token));
   }, []);
 
   const upcomingMovies = useSelector(

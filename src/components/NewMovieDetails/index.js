@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {
   ScrollView, Text, Animated,
 } from 'react-native';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import getMovieList from '../../actions/movieActions';
 import styles from './styles';
 
@@ -11,9 +11,9 @@ const NewMovieDetails = ({
   title, plot, durationMinutes, year, poster, genres,
 }) => {
   const dispatch = useDispatch();
-
+  const token = useSelector((state) => state.token);
   useEffect(() => {
-    dispatch(getMovieList());
+    dispatch(getMovieList(token));
   }, []);
 
   const informationCheck = (information) => (
