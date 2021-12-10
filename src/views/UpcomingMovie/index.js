@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import YoutubePlayer from 'react-native-youtube-iframe';
 import PropTypes from 'prop-types';
 import UpcomingMovieDetail from '../../components/UpcomingMovieDetails';
+import styles from './styles';
 // import NewMovieDetail from '../../components/NewMovieDetails';
 
 const UpcomingMovieView = ({ route }) => {
@@ -35,7 +36,7 @@ const UpcomingMovieView = ({ route }) => {
   };
 
   return (
-    <ScrollView>
+    <ScrollView style={styles.container}>
       <UpcomingMovieDetail
         {...upcomingMovie}
       />

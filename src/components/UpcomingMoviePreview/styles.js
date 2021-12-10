@@ -11,6 +11,7 @@ export default StyleSheet.create({
     alignItems: 'flex-start',
     paddingTop: 10,
     paddingLeft: 10,
+    backgroundColor: '#73160d',
   },
   notImage: {
     paddingLeft: 10,

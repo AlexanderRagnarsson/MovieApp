@@ -21,10 +21,10 @@ const MovieView = ({ route }) => {
   const getShowTimes = (showtimesIn) => {
     const arr = showtimesIn;
     return arr.schedule.map((item) => (
-      <View key={item.purchase_url}>
+      <View key={item.purchase_url} style={styles.container.timeView}>
         <Text>{item.time}</Text>
         <Text
-          style={{ color: 'blue' }}
+          style={{ color: 'blue', paddingBottom: 10 }}
           onPress={() => Linking.openURL(item.purchase_url)}
         >
           {item.purchase_url}
@@ -34,11 +34,11 @@ const MovieView = ({ route }) => {
   };
 
   return (
-    <ScrollView>
+    <ScrollView style={styles.container}>
       <NewMovieDetails
         {...movie}
       />
-      <View style={styles.container}>
+      <View style={styles.showtimes}>
         { getShowTimes(showtimes) }
       </View>
     </ScrollView>

@@ -3,10 +3,22 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   container: {
     padding: 5,
+    backgroundColor: '#73160d',
+  },
+  information: {
+    backgroundColor: '#d9d4d4',
+    margin: 5,
+    padding: 10,
+    borderWidth: 4,
+    borderRadius: 10,
   },
   poster: {
+    alignSelf: 'center',
     height: 300,
     width: 200,
+  },
+  posterView: {
+    padding: 10,
   },
   title: {
     fontSize: 24,

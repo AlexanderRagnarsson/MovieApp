@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
-  ScrollView, Text, Animated,
+  ScrollView, Text, Animated, View,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import getMovieList from '../../actions/movieActions';
@@ -31,17 +31,23 @@ const NewMovieDetails = ({
 
   return (
     <ScrollView style={styles.container}>
-      <Text style={styles.title}>
-        {`${informationCheck(title)}`}
-      </Text>
-      <Text style={styles.plot}>
-        {`${informationCheck(plot)}`}
-      </Text>
-      <Text style={styles.year}>
-        {`Útgáfuár: ${informationCheck(year)}`}
-      </Text>
-      <Animated.Image style={styles.poster} source={{ uri: poster }} />
-      { getGenres() }
+      <View style={styles.information}>
+        <Text style={styles.title}>
+          {`${informationCheck(title)}`}
+        </Text>
+        <Text style={styles.plot}>
+          {`${informationCheck(plot)}`}
+        </Text>
+        <Text style={styles.year}>
+          {`Útgáfuár: ${informationCheck(year)}`}
+        </Text>
+        { getGenres() }
+      </View>
+      <Text> </Text>
+      <View style={styles.posterView}>
+        <Animated.Image style={styles.poster} source={{ uri: poster }} />
+      </View>
+      <Text> </Text>
     </ScrollView>
   );
 };

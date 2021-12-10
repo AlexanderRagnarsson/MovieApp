@@ -16,6 +16,11 @@ export default StyleSheet.create({
     flex: 1,
     paddingTop: 5,
     paddingLeft: 10,
+    backgroundColor: '#d9d4d4',
+    margin: 5,
+    padding: 10,
+    borderWidth: 4,
+    borderRadius: 10,
   },
   Image: {
     paddingRight: 10,

@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { View, Button } from 'react-native';
+import { Text, View, Button, TouchableHighlight } from 'react-native';
 import getToken from '../../actions/tokenActions';
+import styles from './styles';
 
 const Main = ({ navigation: { navigate } }) => {
   const dispatch = useDispatch();
@@ -12,17 +13,21 @@ const Main = ({ navigation: { navigate } }) => {
   }, []);
 
   return (
-    <View>
-      <Button
+    <View style={styles.container}>
+      <TouchableHighlight
+        style={styles.button}
         onPress={() => navigate('Cinemas')}
-        title="See cinemas"
-      />
-      <Button
+      >
+        <Text style={styles.text}>Sjá kvikmyndahús</Text>
+      </TouchableHighlight>
+
+      <TouchableHighlight
+        style={styles.button}
         onPress={() => navigate('Upcoming Movies')}
-        title="See upcoming movies"
-      />
+      >
+        <Text style={styles.text}>Sjá væntanlegar myndir</Text>
+      </TouchableHighlight>
     </View>
-    // <UpcomingMovies {...{ navigate }} />
   );
 };
 

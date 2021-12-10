@@ -9,14 +9,14 @@ import styles from './styles';
 const CinemaPreview = ({
   id, name, website, navigate,
 }) => (
-  <View>
+  <View style={styles.container}>
     <TouchableHighlight
-      style={styles.touchable}
+      style={styles.view}
       onPress={() => navigate('Cinema Details', {
         id,
       })}
     >
-      <View style={styles.view}>
+      <View style={styles.view2}>
         <Text style={styles.name}>{name}</Text>
         <Text style={styles.website}>{website}</Text>
       </View>

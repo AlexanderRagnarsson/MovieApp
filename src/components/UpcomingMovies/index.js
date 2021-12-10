@@ -33,7 +33,7 @@ const UpcomingMovies = ({ navigate }) => {
     (a) => ({ ...a, year: a['release-dateIS'].substring(0, 4) }),
   );
   return (
-    <View>
+    <View styles={{ backgroundColor: '#73160d' }}>
       <FlatList
         data={upcomingMovies}
         renderItem={({ item }) => (

@@ -19,7 +19,7 @@ const CinemaDetails = ({ cinemaId, navigate }) => {
   } = cinemas.filter((Cinema) => Cinema.id === cinemaId)[0];
 
   const getHeader = () => (
-    <View>
+    <View style={styles.container}>
       <Text style={styles.name}>
         {name}
       </Text>
