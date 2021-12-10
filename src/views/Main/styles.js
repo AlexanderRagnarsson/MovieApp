@@ -3,29 +3,24 @@ import * as colors from '../../styles/colors';
 
 export default StyleSheet.create({
   container: {
-    // backgroundColor: colors.byzantium,
+    alignContent: 'center',
+    flex: 1,
     backgroundColor: '#73160d',
   },
-  view: {
+  button: {
     paddingBottom: 10,
     // paddingLeft: 10,
     borderWidth: 4,
     margin: 10,
     borderRadius: 50,
-    // backgroundColor: colors.brickRed,
-    // borderColor: colors.mericanPurple,
     backgroundColor: '#d9d4d4',
+    // backgroundColor: '#7d1409',
+    // borderColor: colors.mericanPurple,
+    alignItems: 'center',
   },
-  name: {
+  text: {
     // color: colors.chili,
     paddingTop: 10,
-    fontSize: 48,
-  },
-  website: {
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
-  view2: {
-    alignItems: 'center',
+    fontSize: 32,
   },
 });

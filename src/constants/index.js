@@ -1,0 +1,4 @@
+export const GET_MOVIE_LIST = 'GET_MOVIE_LIST';
+export const GET_CINEMA_LIST = 'GET_CINEMA_LIST';
+export const GET_UPCOMING_MOVIES_LIST = 'GET_UPCOMING_MOVIES_LIST';
+export const GET_TOKEN = 'GET_TOKEN';
