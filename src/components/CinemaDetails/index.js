@@ -42,7 +42,7 @@ const CinemaDetails = ({ cinemaId, navigate }) => {
     <ScrollView style={styles.view}>
       { getHeader() }
       <View style={styles.movieList}>
-        <Movies {...{ cinemaId, navigate, header: getHeader() }} />
+        <Movies {...{ cinemaId, navigate }} />
       </View>
     </ScrollView>
   );

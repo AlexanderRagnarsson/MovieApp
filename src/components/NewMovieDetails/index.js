@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
-  ScrollView, View, Text, FlatList, Animated, Linking,
+  ScrollView, Text, Animated,
 } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import getMovieList from '../../actions/movieActions';
 import styles from './styles';
 
@@ -26,14 +26,6 @@ const NewMovieDetails = ({
     if (objectGenres.length === 0) return null;
     return (
       objectGenres.map((item) => <Text key={item.ID}>{item.Name}</Text>)
-      // <FlatList
-      //   ListHeaderComponent={<Text>Þemu: </Text>}
-      //   data={objectGenres}
-      //   renderItem={({ item }) => (
-      //     <Text>{item.Name}</Text>
-      //   )}
-      //   keyExtractor={(genre) => genre.ID}
-      // />
     );
   };
 

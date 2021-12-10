@@ -1,7 +1,6 @@
 import React from 'react';
-// import { useSelector } from 'react-redux';
 import {
-  Text, View, TouchableHighlight, FlatList, Animated,
+  Text, View, TouchableHighlight, Animated,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import styles from './styles';
@@ -15,13 +14,6 @@ const NewMoviePreview = ({
     if (objectGenres.length === 0) return null;
     return (
       objectGenres.map((item) => <Text key={item.ID} style={styles.genre}>{item.Name}</Text>)
-      // <FlatList
-      //   data={objectGenres}
-      //   renderItem={({ item }) => (
-      //     <Text style={styles.genre}>{item.Name}</Text>
-      //   )}
-      //   keyExtractor={(genre) => genre.ID}
-      // />
     );
   };
   return (
