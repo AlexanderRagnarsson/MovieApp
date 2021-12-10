@@ -1,6 +1,6 @@
 /* eslint-disable no-restricted-syntax */
 import axios from 'axios';
-import { token } from '../constants';
+import token from '../constants/token';
 
 const BASE_ENDPOINT = 'https://api.kvikmyndir.is';
 

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { token } from '../constants';
+import token from '../constants/token';
 
 const BASE_ENDPOINT = 'https://api.kvikmyndir.is';
 
@@ -11,9 +11,13 @@ const movieService = {
       headers: {
         'x-access-token': token,
       },
-    }).then((response) => (
-      response.data
-    ))),
+    }).then((response) => {
+      console.log('Response data: ', response.data);
+      return (
+        response.data
+      );
+    })
+  ),
 };
 
 export default movieService;
