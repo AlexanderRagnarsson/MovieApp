@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import {
-  View, ScrollView, Text, FlatList, Linking,
+  View, ScrollView, Text, Linking,
 } from 'react-native';
 import PropTypes from 'prop-types';
 // import MovieDetails from '../../components/MovieDetails';
@@ -17,8 +17,6 @@ const MovieView = ({ route }) => {
     (item) => item.id === id,
   )[0];
   const showtimes = movie.showtimes.filter((item) => item.cinema.id === cinemaId)[0];
-
-  console.log('herehere');
 
   const getShowTimes = (showtimesIn) => {
     const arr = showtimesIn;

@@ -8,8 +8,10 @@ import getMovieList from '../../actions/movieActions';
 const Movies = ({ cinemaId, navigate }) => {
   const dispatch = useDispatch();
 
+  const token = useSelector((state) => state.token);
+
   useEffect(() => {
-    dispatch(getMovieList());
+    dispatch(getMovieList(token));
   }, []);
   const movies = useSelector(
     (state) => state.movies,

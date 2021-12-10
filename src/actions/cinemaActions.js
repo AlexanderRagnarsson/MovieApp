@@ -11,9 +11,9 @@ const getCinemaListError = () => ({
   payload: [],
 });
 
-const getCinemaList = () => async (dispatch) => {
+const getCinemaList = (token) => async (dispatch) => {
   try {
-    const cinemaList = await cinemaservices.getCinemaList();
+    const cinemaList = await cinemaservices.getCinemaList(token);
     // console.log('GET_CINEMA_LIST: ', GET_CINEMA_LIST);
     dispatch(getCinemaListSuccess(cinemaList));
   } catch (err) {

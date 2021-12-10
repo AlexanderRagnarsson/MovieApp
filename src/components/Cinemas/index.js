@@ -9,9 +9,12 @@ import styles from './styles';
 const Cinemas = ({ navigate }) => {
   const dispatch = useDispatch();
 
+  const token = useSelector((state) => state.token);
+
   useEffect(() => {
-    dispatch(getCinemaList());
+    dispatch(getCinemaList(token));
   }, []);
+
   const cinemas = useSelector((state) => state.cinemas.sort(
     (a, b) => (
       a.name.localeCompare(b.name)

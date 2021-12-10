@@ -1,11 +1,10 @@
 /* eslint-disable no-restricted-syntax */
 import axios from 'axios';
-import { token } from '../constants';
 
 const BASE_ENDPOINT = 'https://api.kvikmyndir.is';
 
 const cinemaService = {
-  getCinemaList: async () => (
+  getCinemaList: async (token) => (
     axios({
       method: 'get',
       url: `${BASE_ENDPOINT}/theaters`,
@@ -13,8 +12,6 @@ const cinemaService = {
         'x-access-token': token,
       },
     }).then((response) => {
-      // return response.data;
-      // console.log('Response data: ', response.data);
       const sanitizedData = [];
       response.data.forEach((item) => {
         const obj = {};
