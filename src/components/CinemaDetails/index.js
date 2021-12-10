@@ -39,11 +39,12 @@ const CinemaDetails = ({ cinemaId, navigate }) => {
   );
 
   return (
-    <View style={styles.view}>
+    <ScrollView style={styles.view}>
+      { getHeader() }
       <View style={styles.movieList}>
         <Movies {...{ cinemaId, navigate, header: getHeader() }} />
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

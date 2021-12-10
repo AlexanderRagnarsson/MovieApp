@@ -6,7 +6,7 @@ import {
 import PropTypes from 'prop-types';
 import styles from './styles';
 
-const MoviePreview = ({
+const NewMoviePreview = ({
   title, poster, year, genres, navigate,
 }) => {
   const getGenres = () => {
@@ -14,13 +14,14 @@ const MoviePreview = ({
     const objectGenres = genres.filter((item) => typeof item === 'object');
     if (objectGenres.length === 0) return null;
     return (
-      <FlatList
-        data={objectGenres}
-        renderItem={({ item }) => (
-          <Text style={styles.genre}>{item.Name}</Text>
-        )}
-        keyExtractor={(genre) => genre.ID}
-      />
+      objectGenres.map((item) => <Text key={item.ID} style={styles.genre}>{item.Name}</Text>)
+      // <FlatList
+      //   data={objectGenres}
+      //   renderItem={({ item }) => (
+      //     <Text style={styles.genre}>{item.Name}</Text>
+      //   )}
+      //   keyExtractor={(genre) => genre.ID}
+      // />
     );
   };
   return (
@@ -46,12 +47,12 @@ const MoviePreview = ({
   );
 };
 
-MoviePreview.propTypes = {
+NewMoviePreview.propTypes = {
   title: PropTypes.string.isRequired,
   poster: PropTypes.string.isRequired,
   year: PropTypes.string.isRequired,
-  genres: PropTypes.arrayOf(PropTypes.object).isRequired,
+  genres: PropTypes.arrayOf(PropTypes.any).isRequired,
   navigate: PropTypes.func.isRequired,
 };
 
-export default MoviePreview;
+export default NewMoviePreview;

@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
-  View, Text, FlatList, Animated, Linking,
+  ScrollView, View, Text, FlatList, Animated, Linking,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import getMovieList from '../../actions/movieActions';
 import styles from './styles';
 
-const CinemaDetails = ({
+const NewMovieDetails = ({
   title, plot, durationMinutes, year, poster, genres,
 }) => {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ const CinemaDetails = ({
   }, []);
 
   const informationCheck = (information) => (
-    (information !== undefined || information === '' || information === -1) ? information : 'N/A'
+    (information !== undefined || information !== '' || information !== -1) ? information : 'N/A'
   );
 
   const getGenres = () => {
@@ -25,19 +25,20 @@ const CinemaDetails = ({
     const objectGenres = genres.filter((item) => typeof item === 'object');
     if (objectGenres.length === 0) return null;
     return (
-      <FlatList
-        ListHeaderComponent={<Text>Þemu: </Text>}
-        data={objectGenres}
-        renderItem={({ item }) => (
-          <Text>{item.Name}</Text>
-        )}
-        keyExtractor={(genre) => genre.ID}
-      />
+      objectGenres.map((item) => <Text key={item.ID}>{item.Name}</Text>)
+      // <FlatList
+      //   ListHeaderComponent={<Text>Þemu: </Text>}
+      //   data={objectGenres}
+      //   renderItem={({ item }) => (
+      //     <Text>{item.Name}</Text>
+      //   )}
+      //   keyExtractor={(genre) => genre.ID}
+      // />
     );
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Text style={styles.title}>
         {`${informationCheck(title)}`}
       </Text>
@@ -52,24 +53,24 @@ const CinemaDetails = ({
       </Text>
       <Animated.Image style={styles.poster} source={{ uri: poster }} />
       { getGenres() }
-    </View>
+    </ScrollView>
   );
 };
 
-CinemaDetails.propTypes = {
+NewMovieDetails.propTypes = {
   title: PropTypes.string,
   plot: PropTypes.string,
   durationMinutes: PropTypes.number,
   year: PropTypes.string,
   poster: PropTypes.string.isRequired,
-  genres: PropTypes.arrayOf(PropTypes.object).isRequired,
+  genres: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
 
-CinemaDetails.defaultProps = {
+NewMovieDetails.defaultProps = {
   title: '',
   plot: '',
   durationMinutes: -1,
   year: '',
 };
 
-export default CinemaDetails;
+export default NewMovieDetails;

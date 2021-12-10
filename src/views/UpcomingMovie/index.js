@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  View,
+  ScrollView,
 } from 'react-native';
 import { useSelector } from 'react-redux';
 import YoutubePlayer from 'react-native-youtube-iframe';
@@ -18,7 +18,8 @@ const UpcomingMovieView = ({ route }) => {
   )[0];
 
   const getTrailer = () => {
-    const trailer = upcomingMovie.trailers;
+    const trailer = upcomingMovie.trailers[0];
+    // console.log(trailer);
     if (trailer === undefined) { return null; }
     if (trailer.results === undefined || trailer.results.length === 0) { return null; }
     let { key } = trailer.results[0];
@@ -34,12 +35,12 @@ const UpcomingMovieView = ({ route }) => {
   };
 
   return (
-    <View>
+    <ScrollView>
       <NewMovieDetail
         {...upcomingMovie}
       />
       { getTrailer() }
-    </View>
+    </ScrollView>
   );
 };
 

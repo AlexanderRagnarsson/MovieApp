@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { View, FlatList } from 'react-native';
+import { View, FlatList, ScrollView } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 // import MoviesPreview from '../MoviePreview';
 import NewMoviePreview from '../NewMoviePreview';
@@ -19,16 +19,21 @@ const Movies = ({ cinemaId, navigate, header }) => {
   // console.log(movies.id + movies.name);
 
   return (
-    <View>
-      <FlatList
+    <ScrollView>
+      {movies.map((item) => (
+        <View key={item.id}>
+          <NewMoviePreview {...{ ...item, navigate: () => navigate('Movie', { id: item.id, cinemaId }) }} />
+        </View>
+      ))}
+      {/* <FlatList
         ListHeaderComponent={header}
         data={movies}
         renderItem={({ item }) => (
           <NewMoviePreview {...{ ...item, navigate: () => navigate('Movie', { id: item.id, cinemaId }) }} />
         )}
         keyExtractor={(movie) => movie.id}
-      />
-    </View>
+      /> */}
+    </ScrollView>
   );
 };
 
